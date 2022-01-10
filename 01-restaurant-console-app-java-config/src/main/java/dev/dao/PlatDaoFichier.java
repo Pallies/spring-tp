@@ -3,7 +3,7 @@ package dev.dao;
 import dev.entite.Plat;
 import dev.exception.PlatException;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
 import java.io.IOException;
@@ -15,7 +15,9 @@ import java.util.List;
 
 import static java.util.stream.Collectors.toList;
 
-@Repository("fichier")
+@Repository
+
+@Profile("prod")
 public class PlatDaoFichier implements IPlatDao {
 
 

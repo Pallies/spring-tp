@@ -3,3 +3,4 @@ Plat 2;1400
 Plat 3;6000
 Plat 4;700
 raviolli;1100
+platnumero;5600
