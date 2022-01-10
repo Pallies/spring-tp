@@ -2,13 +2,8 @@ package dev;
 
 
 import dev.config.AppConfig;
-import dev.dao.PlatDaoFichier;
-import dev.dao.PlatDaoMemoire;
 import dev.ihm.Menu;
-import dev.service.PlatServiceVersion2;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.Scanner;
@@ -33,10 +28,9 @@ public class App {
         // Menu menu = new Menu(scanner, platServiceVersion2);
         //menu.afficher();
         // }
-        try (Scanner scanner = (Scanner) context.getBean("scanner")) {
             Menu menu = (Menu) context.getBean("createMenu");
             menu.afficher();
-        }
+
 
 
     }
