@@ -2,6 +2,7 @@ package dev.dao;
 
 import dev.entite.Plat;
 import dev.exception.PlatException;
+import org.springframework.stereotype.Repository;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -11,6 +12,7 @@ import java.util.Collections;
 import java.util.List;
 
 import static java.util.stream.Collectors.toList;
+
 
 public class PlatDaoFichier implements IPlatDao {
 

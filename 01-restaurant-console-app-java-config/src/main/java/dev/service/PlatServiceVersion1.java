@@ -3,6 +3,7 @@ package dev.service;
 import dev.dao.IPlatDao;
 import dev.entite.Plat;
 import dev.exception.PlatException;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
