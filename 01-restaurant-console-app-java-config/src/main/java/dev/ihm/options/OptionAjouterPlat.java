@@ -2,9 +2,10 @@ package dev.ihm.options;
 
 import dev.exception.PlatException;
 import dev.service.IPlatService;
+import org.springframework.stereotype.Controller;
 
 import java.util.Scanner;
-
+@Controller
 public class OptionAjouterPlat implements IOptionMenu {
     private Scanner scanner;
 

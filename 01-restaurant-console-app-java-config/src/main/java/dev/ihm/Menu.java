@@ -10,8 +10,10 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @Controller
 public class Menu {
@@ -21,10 +23,11 @@ public class Menu {
     private String menu;
     private Scanner scanner;
 
-    public Menu(Scanner scanner, IPlatService service) {
-        actions.put(1, new OptionListerPlats(service));
-        actions.put(2, new OptionAjouterPlat(scanner, service));
-        actions.put(99, new OptionTerminer());
+    public Menu(Scanner scanner, IPlatService service, List<IOptionMenu> listOption) {
+        AtomicInteger num = new AtomicInteger(0);
+        for(IOptionMenu option : listOption){
+            actions.put(num.incrementAndGet(),option);
+        }
         this.scanner = scanner;
     }
 
