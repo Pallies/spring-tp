@@ -3,34 +3,28 @@ package dev;
 
 import dev.config.AppConfig;
 import dev.ihm.Menu;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 
-import java.util.Scanner;
 
-@SpringBootApplication
+
+@Configuration
+@ComponentScan
 public class App {
 
     public static void main(String[] args) {
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        // Création d'un contexte Spring avec la configuration App.class
+        ApplicationContext context = SpringApplication.run(App.class, args);
 
+        // Récupération du bean Menu
+        Menu menu = context.getBean(Menu.class);
 
-        //try (Scanner scanner = new Scanner(System.in)) {
-        // Choix du Dao
-        //PlatDaoMemoire platDaoMemoire = new PlatDaoMemoire();
-        //PlatDaoFichier platDaoFichier = new PlatDaoFichier("A_COMPLETER/2020-03-formation-spring/restaurant.txt");
-
-        // Choix du service
-        // PlatServiceVersion1 platServiceVersion1 = new PlatServiceVersion1(platDaoFichier);
-        //PlatServiceVersion2 platServiceVersion2 = new PlatServiceVersion2(platDaoMemoire);
-
-        // Construction du menu avec le service choisi
-        // Menu menu = new Menu(scanner, platServiceVersion2);
-        //menu.afficher();
-        // }
-            Menu menu = (Menu) context.getBean("createMenu");
-            menu.afficher();
-
+        // Lancement de l'application
+        menu.afficher();
 
 
     }

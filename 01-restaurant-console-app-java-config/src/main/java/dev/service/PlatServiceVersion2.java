@@ -3,16 +3,17 @@ package dev.service;
 import dev.dao.IPlatDao;
 import dev.entite.Plat;
 import dev.exception.PlatException;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class PlatServiceVersion2 implements IPlatService {
 
     private IPlatDao dao;
 
-    public PlatServiceVersion2(IPlatDao dao) {
+    public PlatServiceVersion2(@Qualifier("fichier") IPlatDao dao) {
         this.dao = dao;
     }
 

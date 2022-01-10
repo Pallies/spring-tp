@@ -15,12 +15,14 @@ import java.util.List;
 
 import static java.util.stream.Collectors.toList;
 
-
+@Repository("fichier")
 public class PlatDaoFichier implements IPlatDao {
-    @Value("${file.restaurant}")
+
+
     private String fichierStockage;
 
-    public PlatDaoFichier(String fichierStockage) {
+    public PlatDaoFichier(@Value("${file.restaurant}")String fichierStockage) {
+        System.out.println(fichierStockage);
         this.fichierStockage = fichierStockage;
         if (!Files.exists(Paths.get(this.fichierStockage))) {
             try {

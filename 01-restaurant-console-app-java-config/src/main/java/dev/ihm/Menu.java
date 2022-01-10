@@ -6,12 +6,14 @@ import dev.ihm.options.OptionAjouterPlat;
 import dev.ihm.options.OptionListerPlats;
 import dev.ihm.options.OptionTerminer;
 import dev.service.IPlatService;
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Controller;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
-@Component
+
+@Controller
 public class Menu {
 
     private Map<Integer, IOptionMenu> actions = new HashMap<>();
