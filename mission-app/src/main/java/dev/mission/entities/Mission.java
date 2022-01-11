@@ -61,4 +61,16 @@ public class Mission {
     public void setTauxJournalier(BigDecimal tauxJournalier) {
         this.tauxJournalier = tauxJournalier;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Mission{");
+        sb.append("id=").append(id);
+        sb.append(", libelle='").append(libelle).append('\'');
+        sb.append(", dateDebut=").append(dateDebut);
+        sb.append(", dateFin=").append(dateFin);
+        sb.append(", tauxJournalier=").append(tauxJournalier);
+        sb.append('}');
+        return sb.toString();
+    }
 }
