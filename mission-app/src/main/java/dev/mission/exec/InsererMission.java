@@ -23,8 +23,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class InsererMission implements CommandLineRunner {
     private Logger LOGGER = LoggerFactory.getLogger(InsererMission.class);
     private final MissionRepository repository;
+    // numéro de la Mission généré automatiquement
     private AtomicInteger num;
-
+    //        La date du jour LocalDate.now() pour l'exemple = 2020.01.01
+    private final LocalDate  toDay =LocalDate.of(2020,01,01);
     public InsererMission(MissionRepository missionRepository) {
         repository = missionRepository;
     }
@@ -33,14 +35,18 @@ public class InsererMission implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 //        launchCreateMission();
-        ListerProchainesMissions();
+        ListerProchainesMissions().forEach(m->{
+            LOGGER.info("avec la sélection Date {}",m.toString());
+        });;
+        ListerProchainesMissionsParTJM(100.5).forEach(m->{
+            LOGGER.info("avec la sélection Date et Taux {}",m.toString());
+        });;
     }
-    public void ListerProchainesMissions() {
-//        La date du jour LocalDate.now() pour l'exemple = 2020.01.01
-        List<Mission> missions = repository.findAllByDateDebutAfter(LocalDate.of(2020,01,01));
-        for (Mission m : missions) {
-            LOGGER.info(m.toString());
-        }
+    public List<Mission> ListerProchainesMissions() {
+        return repository.findAllByDateDebutAfter(toDay);
+    }
+    private List<Mission> ListerProchainesMissionsParTJM(double taux){
+        return repository.findAllByDateDebutAfterAndTauxJournalierAfter(toDay,new BigDecimal(taux));
     }
     private void launchCreateMission() {
         // cherche l'id mission le plus grand de la BDD
@@ -57,6 +63,7 @@ public class InsererMission implements CommandLineRunner {
             LOGGER.info(" Mission {} save ", newMission.getId());
         }
     }
+
 
     private Mission createMission(Integer id) {
         Mission mission = new Mission();
