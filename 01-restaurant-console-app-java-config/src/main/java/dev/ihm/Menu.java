@@ -21,6 +21,7 @@ public class Menu {
     private Map<Integer, IOptionMenu> actions = new HashMap<>();
 
     private String menu;
+
     private Scanner scanner;
 
     public Menu(Scanner scanner, IPlatService service, List<IOptionMenu> listOption) {

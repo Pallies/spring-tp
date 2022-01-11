@@ -1,10 +1,8 @@
 package dev.entite;
 
-import org.springframework.stereotype.Component;
-
 import java.util.Objects;
 
-@Component
+
 public class Plat {
 
     private String nom;
