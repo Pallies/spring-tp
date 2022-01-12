@@ -13,27 +13,37 @@ public class Grade extends BaseEntity {
 	private BigDecimal nbHeuresBase;
 	@Column(name = "taux_base")
 	private BigDecimal tauxBase;
-	
+
 	public String getCode() {
 		return code;
 	}
-	public void setCode(String code) {
+	public Grade setCode(String code) {
 		this.code = code;
+		return this;
 	}
 	public BigDecimal getNbHeuresBase() {
 		return nbHeuresBase;
 	}
-	public void setNbHeuresBase(BigDecimal nbHeuresBase) {
+	public Grade setNbHeuresBase(BigDecimal nbHeuresBase) {
 		this.nbHeuresBase = nbHeuresBase;
+		return this;
 	}
 	public BigDecimal getTauxBase() {
 		return tauxBase;
 	}
-	public void setTauxBase(BigDecimal tauxBase) {
+	public Grade setTauxBase(BigDecimal tauxBase) {
 		this.tauxBase = tauxBase;
+		return this;
 	}
 
-	
-	
 
+	@Override
+	public String toString() {
+		final StringBuilder sb = new StringBuilder(" Grade{");
+		sb.append("code='").append(code).append('\'');
+		sb.append(", nbHeuresBase=").append(nbHeuresBase);
+		sb.append(", tauxBase=").append(tauxBase);
+		sb.append('}');
+		return sb.toString();
+	}
 }

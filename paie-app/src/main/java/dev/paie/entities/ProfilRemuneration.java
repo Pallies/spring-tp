@@ -1,5 +1,7 @@
 package dev.paie.entities;
 
+import org.springframework.context.annotation.Lazy;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -8,12 +10,17 @@ public class ProfilRemuneration extends BaseEntity{
 
 	private String code;
 
-	@ManyToMany
+
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "profil_remuneration_cotisations",
 			joinColumns = @JoinColumn(name = "cotisations_id"),
 			inverseJoinColumns = @JoinColumn(name = "profil_remuneration_id"))
 	private List<Cotisation> cotisations;
 
+//	@ManyToMany(fetch = FetchType.EAGER)
+//	@JoinTable(name = "profil_remuneration_avantages",
+//			joinColumns = @JoinColumn(name = "avantages_id"),
+//			inverseJoinColumns = @JoinColumn(name = "profil_remuneration_id"))
 	@Transient
 	private List<Avantage> avantages;
 
@@ -21,8 +28,9 @@ public class ProfilRemuneration extends BaseEntity{
 		return code;
 	}
 
-	public void setCode(String code) {
+	public ProfilRemuneration setCode(String code) {
 		this.code = code;
+		return this;
 	}
 
 	public List<Cotisation> getCotisations() {
@@ -41,5 +49,11 @@ public class ProfilRemuneration extends BaseEntity{
 		this.avantages = avantages;
 	}
 
-
+	@Override
+	public String toString() {
+		final StringBuilder sb = new StringBuilder("ProfilRemuneration{");
+		sb.append("code='").append(code).append('\'');
+		sb.append('}');
+		return sb.toString();
+	}
 }

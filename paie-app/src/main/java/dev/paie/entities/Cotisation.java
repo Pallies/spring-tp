@@ -53,4 +53,14 @@ public class Cotisation extends BaseEntity{
 		this.imposable = imposable;
 	}
 
+	@Override
+	public String toString() {
+		final StringBuilder sb = new StringBuilder("Cotisation{");
+		sb.append("code='").append(code).append('\'');
+		sb.append(", libelle='").append(libelle).append('\'');
+		sb.append(", tauxSalarial=").append(tauxSalarial);
+		sb.append(", tauxPatronal=").append(tauxPatronal);
+		sb.append('}');
+		return sb.toString();
+	}
 }

@@ -8,7 +8,7 @@ public class Periode extends BaseEntity {
 
 	private LocalDate dateDebut;
 	private LocalDate dateFin;
-	
+
 	public LocalDate getDateDebut() {
 		return dateDebut;
 	}

@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface MissionRepository extends JpaRepository<Mission,Integer> {
 
-    public List<Mission> findAllByDateDebutAfter(LocalDate date);
+    public List<Mission> findAllByDateDebutGreaterThanEqual(LocalDate date);
     public List<Mission> findAllByDateDebutAfterAndTauxJournalierAfter(LocalDate date, BigDecimal taux);
 
 }

@@ -45,7 +45,7 @@ public class InsererMission implements CommandLineRunner {
     }
 
     public List<Mission> ListerProchainesMissions() {
-        return repository.findAllByDateDebutAfter(toDay);
+        return repository.findAllByDateDebutGreaterThanEqual(toDay);
     }
 
     private List<Mission> ListerProchainesMissionsParTJM(double taux) {

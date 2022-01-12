@@ -13,7 +13,6 @@ public class Entreprise extends BaseEntity  {
 	@Column(name = "code_naf")
 	private String codeNaf;
 
-	
 	public String getDenomination() {
 		return denomination;
 	}
@@ -45,4 +44,15 @@ public class Entreprise extends BaseEntity  {
 		this.codeNaf = codeNaf;
 	}
 
+	@Override
+	public String toString() {
+		final StringBuilder sb = new StringBuilder("Entreprise {");
+		sb.append("siret='").append(siret).append('\'');
+		sb.append(", denomination='").append(denomination).append('\'');
+		sb.append(", adresse='").append(adresse).append('\'');
+		sb.append(", urssaf='").append(urssaf).append('\'');
+		sb.append(", codeNaf='").append(codeNaf).append('\'');
+		sb.append('}');
+		return sb.toString();
+	}
 }
