@@ -2,6 +2,6 @@
 batchDemo\
 jpaDemo\
 spring-dataDemo\
-spring-dataDemo\
-jpaDemo\
-batchDemo\
+spring-dataDemo\*
+jpaDemo\*
+batchDemo\*
