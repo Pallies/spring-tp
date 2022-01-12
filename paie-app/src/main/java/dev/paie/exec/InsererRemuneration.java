@@ -32,12 +32,11 @@ public class InsererRemuneration {
     private List<String> alphabet;
 
 
-    private RemunerationEmployeRepository employeRepository;
-    private ProfilRemunerationRepository profilRepository;
-    private EntrepriseRepository entrepriseRepository;
-    private GradeRepository gradeRepository;
+    private final RemunerationEmployeRepository employeRepository;
+    private final ProfilRemunerationRepository profilRepository;
+    private final EntrepriseRepository entrepriseRepository;
+    private final GradeRepository gradeRepository;
 
-    private RemunerationEmployeRepository repositoryEmploye;
 
 
     @Autowired
@@ -67,7 +66,7 @@ public class InsererRemuneration {
                 .setEntreprise(entreprise)
                 .setProfilRemuneration(profilRemuneration)
                 .setGrade(grade);
-        RemunerationEmploye em = repositoryEmploye.save(employe);
+        RemunerationEmploye em = employeRepository.save(employe);
 
         LOGGER.warn("Création de la rémunération d'un employé  {}", employe);
     }
