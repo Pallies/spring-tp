@@ -52,9 +52,9 @@ public class ProfilRemuneration extends BaseEntity{
 
 	@Override
 	public String toString() {
-		final StringBuilder sb = new StringBuilder("ProfilRemuneration{");
-		sb.append("code='").append(code).append('\'');
-		sb.append('}');
+		final StringBuilder sb = new StringBuilder("ProfilRemuneration ");
+		sb.append("code = ").append(code);
+		sb.append('\n');
 		return sb.toString();
 	}
 }

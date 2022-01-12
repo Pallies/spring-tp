@@ -18,20 +18,32 @@ public class BulletinSalaire extends BaseEntity{
 	public RemunerationEmploye getRemunerationEmploye() {
 		return remunerationEmploye;
 	}
-	public void setRemunerationEmploye(RemunerationEmploye remunerationEmploye) {
+	public BulletinSalaire setRemunerationEmploye(RemunerationEmploye remunerationEmploye) {
 		this.remunerationEmploye = remunerationEmploye;
+		return this;
 	}
 	public Periode getPeriode() {
 		return periode;
 	}
-	public void setPeriode(Periode periode) {
+	public BulletinSalaire setPeriode(Periode periode) {
 		this.periode = periode;
+		return this;
 	}
 	public BigDecimal getPrimeExceptionnelle() {
 		return primeExceptionnelle;
 	}
-	public void setPrimeExceptionnelle(BigDecimal primeExceptionnelle) {
+	public BulletinSalaire setPrimeExceptionnelle(BigDecimal primeExceptionnelle) {
 		this.primeExceptionnelle = primeExceptionnelle;
+		return this;
 	}
 
+	@Override
+	public String toString() {
+		final StringBuilder sb = new StringBuilder("BulletinSalaire ");
+		sb.append("remunerationEmploye = ").append(remunerationEmploye);
+		sb.append(", periode = ").append(periode);
+		sb.append(", primeExceptionnelle = ").append(primeExceptionnelle);
+		sb.append('\n');
+		return sb.toString();
+	}
 }

@@ -22,5 +22,12 @@ public class Periode extends BaseEntity {
 		this.dateFin = dateFin;
 	}
 
-
+	@Override
+	public String toString() {
+		final StringBuilder sb = new StringBuilder("Periode ");
+		sb.append("dateDebut = ").append(dateDebut);
+		sb.append(", dateFin = ").append(dateFin);
+		sb.append('\n');
+		return sb.toString();
+	}
 }

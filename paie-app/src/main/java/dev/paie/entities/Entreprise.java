@@ -46,13 +46,13 @@ public class Entreprise extends BaseEntity  {
 
 	@Override
 	public String toString() {
-		final StringBuilder sb = new StringBuilder("Entreprise {");
-		sb.append("siret='").append(siret).append('\'');
-		sb.append(", denomination='").append(denomination).append('\'');
-		sb.append(", adresse='").append(adresse).append('\'');
-		sb.append(", urssaf='").append(urssaf).append('\'');
-		sb.append(", codeNaf='").append(codeNaf).append('\'');
-		sb.append('}');
+		final StringBuilder sb = new StringBuilder("Entreprise ");
+		sb.append("siret = ").append(siret);
+		sb.append(", denomination = ").append(denomination);
+		sb.append(", adresse = ").append(adresse);
+		sb.append(", urssaf = ").append(urssaf);
+		sb.append(", codeNaf = ").append(codeNaf);
+		sb.append('\n');
 		return sb.toString();
 	}
 }

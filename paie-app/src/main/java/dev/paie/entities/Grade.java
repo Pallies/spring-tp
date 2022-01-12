@@ -39,11 +39,11 @@ public class Grade extends BaseEntity {
 
 	@Override
 	public String toString() {
-		final StringBuilder sb = new StringBuilder(" Grade{");
-		sb.append("code='").append(code).append('\'');
-		sb.append(", nbHeuresBase=").append(nbHeuresBase);
-		sb.append(", tauxBase=").append(tauxBase);
-		sb.append('}');
+		final StringBuilder sb = new StringBuilder(" Grade ");
+		sb.append("code = ").append(code);
+		sb.append(", nbHeuresBase = ").append(nbHeuresBase);
+		sb.append(", tauxBase = ").append(tauxBase);
+		sb.append('\n');
 		return sb.toString();
 	}
 }

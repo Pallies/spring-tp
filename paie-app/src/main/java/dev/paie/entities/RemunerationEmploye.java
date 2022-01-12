@@ -53,10 +53,10 @@ public class RemunerationEmploye extends BaseEntity {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
-        sb.append("matricule='").append(matricule).append('\'');
-        sb.append(", entreprise=").append(entreprise);
-        sb.append(", profilRemuneration=").append(profilRemuneration);
-        sb.append(", grade=").append(grade);
+        sb.append("matricule = ").append(matricule);
+        sb.append(", entreprise = ").append(entreprise);
+        sb.append(", profilRemuneration = ").append(profilRemuneration);
+        sb.append(", grade = ").append(grade).append("\n");
         return sb.toString();
     }
 }

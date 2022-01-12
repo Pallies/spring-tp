@@ -5,6 +5,7 @@ import dev.paie.entities.Entreprise;
 import dev.paie.entities.Grade;
 import dev.paie.entities.ProfilRemuneration;
 import dev.paie.entities.RemunerationEmploye;
+import dev.paie.exec.utils.Affectation;
 import dev.paie.repository.EntrepriseRepository;
 import dev.paie.repository.GradeRepository;
 import dev.paie.repository.ProfilRemunerationRepository;
@@ -25,7 +26,7 @@ import java.util.Random;
 
 @Configuration
 @PropertySource("classpath:profil-remuneration.properties")
-public class InsererRemuneration {
+public class InsererRemuneration extends Affectation {
 
     private final Logger LOGGER = LoggerFactory.getLogger(InsererRemuneration.class);
     @Value("${profil.creation-lettre}")
@@ -55,6 +56,7 @@ public class InsererRemuneration {
 
     @PostConstruct
     public void insertionRemuneration() {
+
         String matricule = creationMatricule(profilRepository);
         Entreprise entreprise = affectationEntity(entrepriseRepository);
         Grade grade = affectationEntity(gradeRepository);
@@ -68,7 +70,7 @@ public class InsererRemuneration {
                 .setGrade(grade);
         RemunerationEmploye em = employeRepository.save(employe);
 
-        LOGGER.warn("Création de la rémunération d'un employé  {}", employe);
+        LOGGER.warn("\nCréation de la rémunération d'un employé,\n, {}", employe);
     }
 
     private String creationMatricule(ProfilRemunerationRepository repositoryProfil) {
@@ -91,12 +93,4 @@ public class InsererRemuneration {
                 .append(random.nextInt(10))
                 .toString().toUpperCase();
     }
-
-    private <T> T affectationEntity(JpaRepository<T, Integer> repository) {
-        List<T> list = repository.findAll();
-        int len = list.size();
-        int nbreAlea = new Random().nextInt(len - 1);
-        return  list.get(nbreAlea);
-    }
-
 }

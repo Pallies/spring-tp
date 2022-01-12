@@ -55,12 +55,11 @@ public class Cotisation extends BaseEntity{
 
 	@Override
 	public String toString() {
-		final StringBuilder sb = new StringBuilder("Cotisation{");
-		sb.append("code='").append(code).append('\'');
-		sb.append(", libelle='").append(libelle).append('\'');
-		sb.append(", tauxSalarial=").append(tauxSalarial);
-		sb.append(", tauxPatronal=").append(tauxPatronal);
-		sb.append('}');
+		final StringBuilder sb = new StringBuilder("Cotisation ");
+		sb.append("code = ").append(code);
+		sb.append(", libelle = ").append(libelle);
+		sb.append(", tauxSalarial = ").append(tauxSalarial);
+		sb.append(", tauxPatronal = ").append(tauxPatronal);
 		return sb.toString();
 	}
 }
