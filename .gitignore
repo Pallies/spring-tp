@@ -2,6 +2,9 @@
 batchDemo\
 jpaDemo\
 spring-dataDemo\
-spring-dataDemo\*
-jpaDemo\*
-batchDemo\*
+/spring-dataDemo\*
+/jpaDemo\*
+/batchDemo\*
+/01-restaurant-console-app-java-config/target/
+/01-restaurant-console-app-java-config/restaurant-console-app-java-config.iml
+
