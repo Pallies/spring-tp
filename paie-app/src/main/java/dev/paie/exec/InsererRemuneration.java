@@ -14,9 +14,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Controller;
 
 import javax.annotation.PostConstruct;
 import java.util.Arrays;
@@ -24,7 +23,7 @@ import java.util.List;
 import java.util.Random;
 
 
-@Configuration
+@Controller
 @PropertySource("classpath:profil-remuneration.properties")
 public class InsererRemuneration extends Affectation {
 
@@ -32,27 +31,15 @@ public class InsererRemuneration extends Affectation {
     @Value("${profil.creation-lettre}")
     private List<String> alphabet;
 
-
-    private final RemunerationEmployeRepository employeRepository;
-    private final ProfilRemunerationRepository profilRepository;
-    private final EntrepriseRepository entrepriseRepository;
-    private final GradeRepository gradeRepository;
-
-
-
     @Autowired
-    public InsererRemuneration(
-            RemunerationEmployeRepository employeRepository,
-            ProfilRemunerationRepository profilRepository,
-            EntrepriseRepository entrepriseRepository,
-            GradeRepository gradeRepository
-    ) {
-        this.employeRepository = employeRepository;
-        this.profilRepository = profilRepository;
-        this.entrepriseRepository = entrepriseRepository;
-        this.gradeRepository = gradeRepository;
+    private RemunerationEmployeRepository employeRepository;
+    @Autowired
+    private ProfilRemunerationRepository profilRepository;
+    @Autowired
+    private EntrepriseRepository entrepriseRepository;
+    @Autowired
+    private GradeRepository gradeRepository;
 
-    }
 
     @PostConstruct
     public void insertionRemuneration() {

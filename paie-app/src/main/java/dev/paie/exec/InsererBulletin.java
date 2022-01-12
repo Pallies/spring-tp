@@ -10,13 +10,12 @@ import dev.paie.repository.RemunerationEmployeRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
-
+import org.springframework.stereotype.Controller;
 import javax.annotation.PostConstruct;
 import java.math.BigDecimal;
 import java.util.Random;
 
-@Configuration
+@Controller
 public class InsererBulletin extends Affectation {
 
     private final Logger LOGGER = LoggerFactory.getLogger(InsererBulletin.class);

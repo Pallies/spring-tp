@@ -5,8 +5,8 @@ import dev.paie.repository.GradeRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.stereotype.Controller;
 
 
 import javax.annotation.PostConstruct;
@@ -14,7 +14,7 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
-@Configuration
+@Controller
 @PropertySource("classpath:grade.properties")
 public class InsererGrade {
     private final Logger LOGGER = LoggerFactory.getLogger(InsererGrade.class);
