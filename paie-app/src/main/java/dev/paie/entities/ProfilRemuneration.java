@@ -11,7 +11,7 @@ public class ProfilRemuneration extends BaseEntity{
 	private String code;
 
 
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany
 	@JoinTable(name = "profil_remuneration_cotisations",
 			joinColumns = @JoinColumn(name = "cotisations_id"),
 			inverseJoinColumns = @JoinColumn(name = "profil_remuneration_id"))
@@ -37,8 +37,9 @@ public class ProfilRemuneration extends BaseEntity{
 		return cotisations;
 	}
 
-	public void setCotisations(List<Cotisation> cotisations) {
+	public ProfilRemuneration setCotisations(List<Cotisation> cotisations) {
 		this.cotisations = cotisations;
+		return this;
 	}
 
 	public List<Avantage> getAvantages() {
