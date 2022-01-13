@@ -3,8 +3,6 @@ package fr.diginamic.hotel.services;
 import fr.diginamic.hotel.entite.Client;
 import fr.diginamic.hotel.repository.ClientRepository;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.MethodArgumentNotValidException;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.transaction.Transactional;
 import javax.validation.ConstraintViolationException;
