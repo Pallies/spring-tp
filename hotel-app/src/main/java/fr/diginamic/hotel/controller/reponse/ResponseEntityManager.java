@@ -3,7 +3,11 @@ package fr.diginamic.hotel.controller.reponse;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -17,13 +21,18 @@ public abstract class ResponseEntityManager {
      * @param message the message
      * @return the response entity
      */
-    public <T> ResponseEntity<T> ResponseEntityBuilderValid(T message){
+    public <T> ResponseEntity<T> ResponseEntityBuilderValid(T message) {
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONNECTION, "OK")
-                .header(HttpHeaders.CONTENT_DISPOSITION,"Demande valide")
+                .header(HttpHeaders.CONTENT_DISPOSITION, "Demande valide")
                 .body(message);
     }
-    public ResponseEntity<String> ResponseEntityBuilderError(String message)  {
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(message);
+
+    public ResponseEntity<?> ResponseEntityBuilderError(String message) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("message", message);
+        map.put("status", HttpStatus.NOT_FOUND);
+
+        return new ResponseEntity<>(map,HttpStatus.NOT_FOUND);
     }
 }
