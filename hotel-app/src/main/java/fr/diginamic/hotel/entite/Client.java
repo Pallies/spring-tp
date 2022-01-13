@@ -1,17 +1,21 @@
 package fr.diginamic.hotel.entite;
 
+import org.springframework.validation.annotation.Validated;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.validation.constraints.Size;
 
 @Entity
+@Validated
 public class Client extends BaseEntite {
-
 
     @Column(unique = true, nullable = false)
     private String numero;
 
+    @Size(min = 2)
     private String nom;
-
+    @Size(min = 2)
     private String prenoms;
 
     public Client() {
