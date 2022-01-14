@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.validation.constraints.Size;
 
 @Entity
+@Validated
 public class Client extends BaseEntite {
 
     @Column(unique = true, nullable = false)
