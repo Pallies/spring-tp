@@ -27,8 +27,8 @@ public class ClientController extends ResponseEntityManager {
     }
 
     @GetMapping("/{numero}")
-    public ResponseEntity<Client> clientById(@PathVariable(name = "numero") Integer id) {
-        Client client = clientService.findclientById(id);
+    public ResponseEntity<Client> clientById(@PathVariable String numero) {
+        Client client = clientService.findClientByNumero(numero);
         if(client != null)
             return  ResponseEntityBuilderValid(client);
         else

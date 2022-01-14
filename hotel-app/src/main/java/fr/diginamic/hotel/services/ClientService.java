@@ -23,8 +23,8 @@ public class ClientService {
         this.repository = repository;
     }
 
-    public Client findclientById(Integer id) {
-        return repository.findById(id).orElse(null);
+    public Client findClientByNumero(String numero) {
+        return repository.findClientByNumero(numero).orElse(null);
     }
 
     public List<Client> paginationClientList(Integer start, Integer size) {
