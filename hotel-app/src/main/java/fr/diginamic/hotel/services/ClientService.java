@@ -2,6 +2,7 @@ package fr.diginamic.hotel.services;
 
 import fr.diginamic.hotel.entite.Client;
 import fr.diginamic.hotel.repository.ClientRepository;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -25,9 +26,9 @@ public class ClientService {
     }
 
     public List<Client> paginationClientList(Integer start, Integer size) {
-        return repository.findAllOrderByName().stream()
-                .skip(start-1).limit(size)
-                .collect(Collectors.toList());
+        return this.repository.findAll(
+                PageRequest.of(start, size)
+        ).toList();
     }
 
     public Client saveClient(@Valid Client client)  throws ConstraintViolationException{
