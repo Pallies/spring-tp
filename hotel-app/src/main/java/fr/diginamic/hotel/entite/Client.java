@@ -1,5 +1,7 @@
 package fr.diginamic.hotel.entite;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import org.springframework.boot.autoconfigure.web.servlet.WebMvcProperties;
 import org.springframework.validation.annotation.Validated;
 
 import javax.persistence.Column;
@@ -7,7 +9,6 @@ import javax.persistence.Entity;
 import javax.validation.constraints.Size;
 
 @Entity
-@Validated
 public class Client extends BaseEntite {
 
     @Column(unique = true, nullable = false)
@@ -25,7 +26,7 @@ public class Client extends BaseEntite {
         this.nom = nom;
         this.prenoms = prenoms;
     }
-
+    @JsonView()
     public String getNumero() {
         return numero;
     }

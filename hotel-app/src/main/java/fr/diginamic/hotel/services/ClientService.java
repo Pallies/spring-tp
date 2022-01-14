@@ -1,6 +1,8 @@
 package fr.diginamic.hotel.services;
 
 import fr.diginamic.hotel.entite.Client;
+import fr.diginamic.hotel.exception.BadRequestException;
+import fr.diginamic.hotel.exception.ErrorHotel;
 import fr.diginamic.hotel.repository.ClientRepository;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -42,5 +44,19 @@ public class ClientService {
             clientsAsSave.add(saveClient(c));
         }
         return clientsAsSave;
+    }
+
+    /**
+     * contrôle si le client existe sinon lève une exception
+     * @param numeroClient
+     * @throws BadRequestException
+     */
+    public void ControlClientExist(String numeroClient) throws BadRequestException {
+        boolean isClientExist = repository.findAll()
+                .stream().map(Client::getNumero)
+                .collect(Collectors.toList())
+                .contains(numeroClient);
+        if (!isClientExist)
+            throw new BadRequestException(ErrorHotel.NOT_CLIENT, List.of(" "));
     }
 }

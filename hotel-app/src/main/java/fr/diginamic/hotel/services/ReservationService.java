@@ -1,36 +1,44 @@
 package fr.diginamic.hotel.services;
 
-import com.fasterxml.jackson.core.io.IOContext;
-import fr.diginamic.hotel.entite.Client;
+import fr.diginamic.hotel.entite.Chambre;
 import fr.diginamic.hotel.entite.Reservation;
 import fr.diginamic.hotel.exception.BadRequestException;
-import fr.diginamic.hotel.repository.ClientRepository;
+import fr.diginamic.hotel.exception.ErrorHotel;
+import fr.diginamic.hotel.repository.ChambreRepository;
 import fr.diginamic.hotel.repository.ReservationRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
 public class ReservationService {
 
 
-    private final ClientRepository clientRepository;
+    private final ClientService clientService;
+    private final ChambreService chambreService;
 
     private final ReservationRepository repository;
 
-    public ReservationService(ReservationRepository repository,ClientRepository clientRepository) {
+    public ReservationService(
+            ReservationRepository repository,
+            ClientService clientService,
+            ChambreService chambreService
+    ) {
         this.repository = repository;
-        this.clientRepository=clientRepository;
+        this.clientService = clientService;
+        this.chambreService = chambreService;
     }
 
-    public Reservation saveReservation(Reservation reservation) throws BadRequestException {
+    public Reservation saveReservation(Reservation reservation, String hotel) throws BadRequestException {
+        // vérification de l'existance du client
         String numeroClient = reservation.getClient().getNumero();
-        boolean isClientExist = clientRepository.findAll()
-                .stream().map(Client::getNumero)
-                .collect(Collectors.toList())
-                .contains(numeroClient);
-        if (!isClientExist)
-            throw new BadRequestException("{ messages : numéro client non trouvé }");
+        clientService.ControlClientExist(numeroClient);
+
+        // vérification de l'existance des chambres dans l'hotel
+        List<Chambre> chambers = reservation.getChambres();
+        chambreService.controlChamberInHotelExist(hotel,chambers);
+
         return repository.save(reservation);
     }
 }
